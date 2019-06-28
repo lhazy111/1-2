@@ -1,0 +1,12 @@
+body{
+	font-size: 2em;
+}
+
+.li-container{
+	display: flex;
+	padding:10px;
+}
+
+li{
+	min-width: 200px;
+}
