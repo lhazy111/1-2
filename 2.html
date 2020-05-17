@@ -1,24 +1,54 @@
-<!DOCTYPE HTML>
+</html>
+<!doctype html>
+<html lang="en">
 
-<html>
-    <head>
-        <title>Shopping</title>
-       <link rel="stylesheet" href="slist.css">
-    </head>
-    <body>
-        <h1>Shopping list</h1>
-        <input id="userinput" type="text" placeholder="enter items">
-        <button id="enter">Enter</button>
-       
-        <ul>
-        	<div class="li-container">
-        	<li>Jaja?</li>
-        	<button class="delete">Delete</button>
-        	</div>
-        	
-        </ul>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-        <script src="slist.js"></script>
-    </body>
+    <title>Shopping list</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center border-bottom">Shopping list</h1>
+        <div class="row p-3">
+            <div class="col">
+                <input class="h5 border" id="userinput" type="text" placeholder="enter item">
+            </div>
+            <div class="col d-flex justify-content-end">
+                <button class="btn btn-secondary btn-sm " id="enter">Enter</button>
+            </div>
+        </div>
+        <div class="row p-3">
+            <ul class="list-group w-100">
+                <div class="li-container container">
+                    <li class="list-group-item w-100 h3">Vegetables<button
+                            class="btn btn-secondary btn-sm delete float-right">Delete</button>
+                    </li>
+                </div>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="slist.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>

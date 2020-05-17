@@ -4,7 +4,7 @@ let ul = document.querySelector("ul");
 let li = document.getElementsByTagName("li");
 
 
-ul.addEventListener("click", function(e){
+ul.addEventListener("click", function (e) {
 	let clickedElement = e.target
 	let clickedElClassList = e.target.classList;
 	//console.log(clickedElement.tagName);
@@ -14,23 +14,23 @@ ul.addEventListener("click", function(e){
 		clickedElClassList.toggle("done");
 		console.log(clickedElement.style.textDecoration);
 		//document.getElementById("myAnchor").removeAttribute("href");
-		if(clickedElement.style.textDecoration==="line-through") {
+		if (clickedElement.style.textDecoration === "line-through") {
 			clickedElement.removeAttribute("style");
 
-		}else{
-			clickedElement.style.textDecoration="line-through";
-		} 
-		}else if (clickedElement.tagName === "BUTTON") {
-			//console.log("BUTTON");
-			//list.removeChild(list.childNodes[0]);
-			(clickedElement.parentElement.parentElement).removeChild(clickedElement.parentElement);
-			//console.log(clickedElClassList);
-			//console.log(e.target.innerHTML);
-			//console.log(e.target.className);
+		} else {
+			clickedElement.style.textDecoration = "line-through";
 		}
+	} else if (clickedElement.tagName === "BUTTON") {
+		//console.log("BUTTON");
+		//list.removeChild(list.childNodes[0]);
+		(clickedElement.parentElement.parentElement).removeChild(clickedElement.parentElement);
+		//console.log(clickedElClassList);
+		//console.log(e.target.innerHTML);
+		//console.log(e.target.className);
+	}
 })
-	
-	
+
+
 enter_but.addEventListener("click", addToListOnClick);
 
 input.addEventListener("keypress", addToListOnEnter);
@@ -42,15 +42,15 @@ function inputLength() {
 
 
 function addToListOnClick() {
-	if(inputLength()>0){
-	addListElement();
-}
+	if (inputLength() > 0) {
+		addListElement();
+	}
 }
 
 function addToListOnEnter(event) {
-	if(inputLength()>0 && event.keyCode === 13){
+	if (inputLength() > 0 && event.keyCode === 13) {
 		addListElement();
-}
+	}
 }
 
 function addListElement() {
@@ -59,9 +59,11 @@ function addListElement() {
 	let bu = document.createElement("button")
 	li.appendChild(document.createTextNode(input.value));
 	ul.appendChild(di);
-	di.classList.add("li-container");
+	di.classList.add("li-container", "container");
 	di.appendChild(li);
-	di.appendChild(bu);
-	bu.innerText="Delete";
-	input.value="";
+	li.classList.add("list-group-item", "w-100", "h3", "text-wrap");
+	li.appendChild(bu);
+	bu.classList.add("btn", "btn-secondary", "btn-sm", "delete", "float-right");
+	bu.innerText = "Delete";
+	input.value = "";
 }
