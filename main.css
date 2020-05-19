@@ -17,7 +17,12 @@ header{
     font-size: 10vw;
     text-shadow: 6px 6px 3px rgb(14, 0, 0)
 }
-button{
+.btn-shadow{
     box-shadow: 6px 6px 3px rgb(14, 0, 0);
     text-shadow: 3px 3px 3px rgb(14, 0, 0)
+}
+
+.strike-out{
+    text-decoration: line-through;
+    background-color: yellow;
 }

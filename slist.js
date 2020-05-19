@@ -1,11 +1,10 @@
 
 //--------variables---------------------------------------------------------------
 let items = [];
-let id = 1;
 let enter_but = document.getElementById("enter");
 let input = document.getElementById("userinput");
 let ul = document.querySelector("ul");
-let li = document.getElementsByTagName("li");
+//let li = document.getElementsByTagName("li");
 
 //------------------------function testing s_list presence onload-----------------
 window.onload = (e) => {
@@ -13,7 +12,7 @@ window.onload = (e) => {
 	if (localStorage.getItem("s_list")) {
 		console.log('slist exist in storage');
 		items = JSON.parse(localStorage.getItem("s_list"));
-		console.log('items form localstorage:', items);
+		console.log('items from localstorage:', items);
 		display_stored_list(items);
 	} else {
 		console.log('slist not stored');
@@ -43,7 +42,7 @@ function addListElement(item) {
 	di.appendChild(li);
 	li.classList.add("list-group-item", "w-100", "h3", "text-wrap");
 	li.id = item.id;
-	if (item.bought) { li.classList.add("done") };
+	if (item.bought) { li.classList.add("strike-out") };
 	li.appendChild(bu);
 	bu.classList.add("btn", "btn-secondary", "btn-sm", "delete", "float-right");
 	bu.innerText = "Delete";
@@ -58,16 +57,20 @@ ul.addEventListener("click", function (e) {
 	let clickedElement = e.target
 	let clickedElClassList = e.target.classList;
 	if (clickedElement.tagName === "LI") {
-		//clickedElClassList.toggle("done");
+		clickedElClassList.toggle("strike-out");
+		items[parseInt(clickedElement.id)].bought = !items[parseInt(clickedElement.id)].bought;
+		refresh_storage();
 		console.log("index nr", clickedElement.id);
-		if (clickedElement.style.textDecoration === "line-through") {
-			clickedElement.removeAttribute("style");
+		/*if (clickedElement.style.textDecoration === "line-through") {
+			clickedElement.style.textDecoration = ("none");
+			items[parseInt(clickedElement.id)].bought = false;
 			console.log(clickedElement, "index", clickedElement.id);
 		} else {
 			clickedElement.style.textDecoration = "line-through";
 			console.log("index", clickedElement.id);
+			items[parseInt(clickedElement.id)].bought = true;
 
-		}
+		}*/
 	} else if (clickedElement.tagName === "BUTTON") {
 		(clickedElement.parentElement.parentElement).removeChild(clickedElement.parentElement);
 		console.log("id clicked", parseInt(clickedElement.parentElement.id));
@@ -129,53 +132,3 @@ function update_array(index) {
 	}
 	refresh_storage();
 }
-	/*if (localStorage.getItem("s_list")) {
-console.log('dodanie do localstorage');
-let s_list = JSON.parse(localStorage.getItem("s_list"));
-s_list.push(item);
-localStorage.setItem('s_list', JSON.stringify(s_list));
-//alert('dodano?');
-} else {
-console.log('pierwszy');
-// alert(newQuestion.question);
-localStorage.setItem("s_list", JSON.stringify([item]));
-}
-}
-
-/*if (localStorage.getItem("s_list")) {
-console.log('dodanie');
-let s_list = JSON.parse(localStorage.getItem("s_list"));
-s_list.push(item);
-localStorage.setItem('s_list', JSON.stringify(s_list));
-//alert('dodano?');
-} else {
-console.log('pierwszy');
-// alert(newQuestion.question);
-localStorage.setItem("s_list", JSON.stringify([item]));
-}
-
-//formInput.reset();
-}
-
-
-function stored_list() {
-let newItem = input.value;
-
-if (localStorage.getItem("s_list")) {
-console.log('dodanie');
-let s_list = JSON.parse(localStorage.getItem("s_list"));
-//alert('dodanie1');
-//alert(questionsStorage.question);
-//alert(newQuestionObject.question);
-s_list.push(newItem);
-//alert('dodanie2');
-localStorage.setItem('s_list', JSON.stringify(s_list));
-//alert('dodano?');
-} else {
-console.log('pierwszy');
-// alert(newQuestion.question);
-localStorage.setItem("s_list", JSON.stringify([newItem]));
-}
-
-//formInput.reset();
-}*/
