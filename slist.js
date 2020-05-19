@@ -54,7 +54,7 @@ function addListElement(item) {
 
 //---------------------click on list element event ------------------------------
 ul.addEventListener("click", function (e) {
-	console.log('item clicked', e.target);
+	console.log('item clicked', e.target.parentElement);
 	let clickedElement = e.target
 	let clickedElClassList = e.target.classList;
 	if (clickedElement.tagName === "LI") {
@@ -70,7 +70,7 @@ ul.addEventListener("click", function (e) {
 		}
 	} else if (clickedElement.tagName === "BUTTON") {
 		(clickedElement.parentElement.parentElement).removeChild(clickedElement.parentElement);
-		console.log("id clicked", typeof (parseInt(clickedElement.parentElement.id)));
+		console.log("id clicked", parseInt(clickedElement.parentElement.id));
 		update_array(parseInt(clickedElement.parentElement.id));
 	}
 })
@@ -115,15 +115,17 @@ function add_to_list(item) {
 function refresh_storage() {
 	localStorage.removeItem("s_list");
 	localStorage.setItem("s_list", JSON.stringify(items));
+	display_stored_list();
 }
 
 function update_array(index) {
 	console.log("wycinam:", items[index])
 	items.splice(index, 1);
-	console.log(items.length);
+	console.log('nowa dlugosc tablicy', items.length);
 	for (i = 0; i < items.length; i++) {
-		console.log('item:', items[i]);
 		items[i].id = i;
+		console.log('item:', items[i]);
+
 	}
 	refresh_storage();
 }
